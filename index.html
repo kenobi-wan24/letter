@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>A Letter for Fia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Pinyon+Script&family=Cormorant+SC:wght@500;600&family=Caveat:wght@500;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<svg id="flight" aria-hidden="true">
+  <path id="route" fill="none" stroke="none"></path>
+  <path id="trail"></path>
+  <g id="plane" transform="translate(-100 -100)">
+    <polygon class="w2" points="-18,12 22,0 -10,0"></polygon>
+    <polygon class="w1" points="-18,-12 22,0 -10,0"></polygon>
+    <polygon class="w3" points="-10,0 22,0 -14,5"></polygon>
+  </g>
+</svg>
+
+<main class="stage">
+  <div class="env-wrap waiting" id="envWrap">
+    <div class="eyebrow">For Alifianna</div>
+    <button class="envelope" id="envelope" aria-label="Open the letter">
+      <span class="peek"></span>
+      <span class="flap"></span>
+      <span class="pocket"></span>
+      <span class="seal">K</span>
+    </button>
+    <div class="hint">tap the seal, mahal</div>
+  </div>
+
+  <section class="letter" id="letter" aria-live="polite">
+    <article class="paper">
+      <span class="tape" aria-hidden="true"></span>
+
+      <!-- postage stamp + postmark (top right corner) -->
+      <div class="stamp-group" aria-hidden="true">
+        <svg class="postmark" viewBox="0 0 100 100">
+          <defs>
+            <path id="pm-arc" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"></path>
+          </defs>
+          <circle cx="50" cy="50" r="46"></circle>
+          <circle cx="50" cy="50" r="29"></circle>
+          <text class="pm-ring"><textPath href="#pm-arc">DAVAO CITY · PHILIPPINES ·</textPath></text>
+          <text class="pm-day" x="50" y="49" id="pmDay">09 OCT</text>
+          <text class="pm-year" x="50" y="62" id="pmYear">2026</text>
+        </svg>
+        <div class="stamp">
+          <div class="stamp-art">
+            <span class="stamp-sun"></span>
+            <span class="stamp-heart">♥</span>
+            <span class="stamp-label">Par Avion</span>
+          </div>
+        </div>
+      </div>
+
+      <header class="paper-head">
+        <h1 class="to">Dear Fia,</h1>
+      </header>
+
+      <div class="page-wrap" id="pageWrap">
+        <!-- ✍️ KEN: each <p> becomes one page. Add or remove <p> tags freely. -->
+        <div class="body" id="body">
+          <p>I still think about the little moments that might seem ordinary to you but have stayed with me ever since. The way you ask me if I love you, the little things you say that make me smile at my screen, and how even a simple conversation with you can turn an ordinary day into something I'll remember. Sometimes I wish I could save those moments somewhere safe, just so I could return to them whenever I miss you. You might not realize it, but you've become part of so many little things in my day. And somehow, even from miles away, you make this heart of mine feel understood in ways I never knew I needed.</p>
+          <p>Fia, I love you for more than the way you make me feel. I love the person you are when you're excited about something, when you talk about your dreams, when you share your drawings, and even when you're tired and don't have the energy to be your usual self. I love that there's so much more to discover about you, and I want to keep learning not because I expect you to be perfect, but because I want to understand you better. I know I'm still learning how to love you the way you deserve, and I won't pretend I'll always get everything right. But I want to listen when I misunderstand you, apologize when I hurt you, and show you through my actions that your feelings matter to me. You don't have to be at your best every day to be loved by me. You can simply be you, and I'll still be grateful that I get to know you.</p>
+          <p>Sometimes, the distance makes me wish I could skip ahead to the day when I can finally see you without a screen between us. I imagine the ordinary things we talk about a meal together, hearing about your day while sitting beside you, laughing over something silly, or simply enjoying the quiet without needing to fill it with words. I don't just dream about a wedding or the big milestones we hope to reach someday. I dream about all the little days that come after, too. I know our future isn't something we can predict perfectly, but I hope we continue choosing honesty, patience, faith, and kindness as we grow. Until the day distance is no longer part of our story, I'll keep doing my part to make what we have meaningful right here, right now. And if there's one thing I hope you never forget, it's this: somewhere in this enormous world, there's a boy who feels incredibly lucky that he got to meet you, who is proud of the person you're becoming, and who looks forward to discovering all the beautiful little chapters we haven't written yet.</p>
+        </div>
+
+        <!-- shown only on the last page -->
+        <div class="closing" id="closing" hidden>
+          <svg class="doodle" viewBox="0 0 120 80" aria-hidden="true">
+            <path class="loop" d="M6 70 C30 72 34 40 52 44 C70 48 58 66 48 60 C38 54 56 30 92 22"></path>
+            <g transform="translate(98 20) rotate(-18)">
+              <path class="pen" d="M-14 -8 L14 0 L-14 8 L-8 0 Z M-8 0 L14 0"></path>
+            </g>
+          </svg>
+          <div class="sign">
+            <div class="with">With all my love,</div>
+            <div class="name">Ken</div>
+          </div>
+        </div>
+        <div class="days" id="days" hidden></div>
+      </div>
+
+      <nav class="foot" aria-label="Letter pages">
+        <button class="nav-btn" id="prev">← back</button>
+        <span class="page-no" id="pageNo"></span>
+        <button class="nav-btn" id="next">next page →</button>
+      </nav>
+    </article>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
